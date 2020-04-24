@@ -1,4 +1,4 @@
-//O(n²)
+//O(n log n)
 public class Question2 {
 
     public boolean isPartialPermutation(String pattern, String permutation) {

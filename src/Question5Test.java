@@ -8,13 +8,18 @@ public class Question5Test {
 
     @Test
     public void getRemovedDuplicates_linkedList() {
+        long v1 = System.currentTimeMillis();
         LinkedList<String> list = new LinkedList<>();
-        list.add("a");
-        list.add("b");
-        list.add("c");
-        list.add("a");
-        list = new Question5().getRemovedDuplicates(list);
+        for (int i = 0; i< 10000; i++) {
+            list.add("a");
+            list.add("b");
+            list.add("c");
+            list.add("a");
+        }
+//        list = Question5.getRemovedDuplicates(list);
+        Question5.removeDuplicates(list);
 
+        System.out.println(""+ (System.currentTimeMillis() - v1));
         assertEquals(3, list.size());
         assertTrue(list.contains("a"));
         assertTrue(list.contains("b"));
@@ -28,7 +33,7 @@ public class Question5Test {
         list.add("b");
         list.add("c");
         list.add("a");
-        list = new Question5().getRemovedDuplicates(list);
+        list = Question5.getRemovedDuplicates(list);
 
         assertEquals(3, list.size());
     }

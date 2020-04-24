@@ -4,14 +4,25 @@ import java.util.Set;
 
 public class Question5 {
 
-    public LinkedList<String> getRemovedDuplicates(LinkedList<String> list) {
+    //O(n log n)
+    public static <T> void removeDuplicates(LinkedList<T> list) {
+        for (int j, i = 0; i < list.size(); i++) {
+            T item = list.get(i);
+            for (j = i + 1; j < list.size(); j++) {
+                if (item.equals(list.get(j))) list.remove(j--);
+            }
+        }
+    }
+
+    //O(n)
+    public static <T> LinkedList<T> getRemovedDuplicates(LinkedList<T> list) {
         return new LinkedList<>(new HashSet<>(list));
     }
 
     //O(n)
-    public MyLinkedList<String> getRemovedDuplicates(MyLinkedList<String> list) {
-        MyLinkedList<String> result = new MyLinkedList<>();
-        Set<String> set = new HashSet<>();
+    public static <T> MyLinkedList<T> getRemovedDuplicates(MyLinkedList<T> list) {
+        MyLinkedList<T> result = new MyLinkedList<>();
+        Set<T> set = new HashSet<>();
 
         if (list.size() > 0) {
             do {
@@ -19,7 +30,7 @@ public class Question5 {
             } while(list.next());
         }
 
-        for (String item : set) {
+        for (T item : set) {
             result.add(item);
         }
 
